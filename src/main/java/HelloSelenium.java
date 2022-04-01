@@ -2,7 +2,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
@@ -12,28 +12,27 @@ public class HelloSelenium {
         WebDriverManager.safaridriver().setup();
         WebDriverManager.firefoxdriver().setup();
 
-        WebDriver driver;
+        WebDriver driver = new ChromeDriver();
 
-        driver = new SafariDriver();
-
-        driver.get("http://www.google.com");
+        driver.get("https://fortnitetracker.com");
 
         System.out.println(driver.getTitle());
-        //System.out.println(driver.getPageSource());
+        System.out.println(driver.getPageSource());
 
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(5000));
         Thread.sleep(5*1000);
 
         WebElement searchBox = driver.findElement(By.name("q"));
-        WebElement searchButton = driver.findElement(By.name("btnK"));
+        WebElement searchButton = driver.findElement(By.className("hp-search-form__button"));
 
-        searchBox.sendKeys("Selenium");
-        System.out.println(searchBox.getAttribute("value"));
+        searchBox.sendKeys("Roostmoos");
+
 
         searchButton.click();
-        searchButton.getText();
-        searchBox = driver.findElement(By.name("q"));
-        searchBox.getAttribute("value");
+        String contentFortniteTracker = driver.findElement(By.id("profile")).getText();
+        System.out.println(contentFortniteTracker);
+
+        driver.navigate().back();
 
         driver.quit();
 
