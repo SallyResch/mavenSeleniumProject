@@ -1,15 +1,10 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class HelloSelenium {
     public static void main(String[] args) throws InterruptedException {
@@ -19,9 +14,9 @@ public class HelloSelenium {
 
         WebDriver driver;
 
-        driver = new ChromeDriver();
+        driver = new SafariDriver();
 
-        driver.get("https://skr-fortnitetracker.herokuapp.com");
+        driver.get("http://www.google.com");
 
         System.out.println(driver.getTitle());
         //System.out.println(driver.getPageSource());
